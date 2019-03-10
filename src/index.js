@@ -19,24 +19,27 @@ function toSplit(str) {
 module.exports = function check(str, bracketsConfig) {
   // your solution
   arrBrackets = toSplit(str);
-
   newObjOfBrackets = toObject(bracketsConfig);
-
   keys = Object.keys(newObjOfBrackets);
-  let count = 0;
 
   for (var i = 0; i < keys.length; i++) {
     for (var j = 0; j < arrBrackets.length; j++) {
-      if (keys[i] == arrBrackets[j]) {
-        count += 1;
-      } else {
-        count -= 1;
-      }
+      if (arrBrackets.includes(keys[i])){
+        arrBrackets.splice(arrBrackets[j], 1) 
+      } else continue
+      if (arrBrackets.includes(newObjOfBrackets[keys[i]])) {
+        arrBrackets.splice(arrBrackets[j], 1)
+      } else continue
     }
-  }
+}
 
-  if (count == 0) {
-    return true;
-  } else { return false}
+let result;
+if (arrBrackets.length == 0) {
+  result = true
+} else {
+  result = false
+}
+
+return result;
 
 }
