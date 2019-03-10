@@ -1,6 +1,9 @@
 
-// const bracketsConfig  =  [['(', ')']];
-// const str = "((()))()";
+const bracketsConfig  =  [['(', ')']];
+const str = "((()))()";
+let Stack = [];
+var newObj = {};
+var newSTR = [];
 
 function toObject(bracketsConfig) {
   let obj = {};
@@ -8,15 +11,23 @@ function toObject(bracketsConfig) {
   return obj;
 }
 
-var arr = [];
-arr = str.split('');
+function toSplit(str){
+  let arr = [];
+  arr = str.split('');
+  return arr;
+}
+
+newObj = toObject(bracketsConfig);
+console.log(newObj)
+
+newSTR = toSplit(str)
+console.log(newSTR);
 
 
 
 module.exports = function check(str, bracketsConfig) {
   // your solution
   toObject(bracketsConfig);
-  if (obj.includes(arr)) {
-    return false
-  }
+
+
 }
