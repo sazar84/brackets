@@ -1,9 +1,8 @@
-
-const bracketsConfig  =  [['(', ')']];
-const str = "((()))()";
-let Stack = [];
-var newObj = {};
-var newSTR = [];
+// const bracketsConfig  =  [['(', ')']];
+// const str = "((()))()";
+// let Stack = [];
+var newObjOfBrackets = {};
+var arrBrackets = [];
 
 function toObject(bracketsConfig) {
   let obj = {};
@@ -11,23 +10,33 @@ function toObject(bracketsConfig) {
   return obj;
 }
 
-function toSplit(str){
+function toSplit(str) {
   let arr = [];
   arr = str.split('');
   return arr;
 }
 
-newObj = toObject(bracketsConfig);
-console.log(newObj)
-
-newSTR = toSplit(str)
-console.log(newSTR);
-
-
-
 module.exports = function check(str, bracketsConfig) {
   // your solution
-  toObject(bracketsConfig);
+  arrBrackets = toSplit(str);
 
+  newObjOfBrackets = toObject(bracketsConfig);
+
+  keys = Object.keys(newObjOfBrackets);
+  let count = 0;
+
+  for (var i = 0; i < keys.length; i++) {
+    for (var j = 0; j < arrBrackets.length; j++) {
+      if (keys[i] == arrBrackets[j]) {
+        count += 1;
+      } else {
+        count -= 1;
+      }
+    }
+  }
+
+  if (count == 0) {
+    return true;
+  } else { return false}
 
 }
